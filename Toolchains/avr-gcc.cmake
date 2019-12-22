@@ -20,14 +20,16 @@ set(CMAKE_SYSTEM_VERSION 1)
 # Try to find the compilers. We will need their path later.
 include(Utils)
 
-find_program_harder(CMAKEMBED_AVR_C_COMPILER "avr-gcc" CMAKEMBED_AVR_SYSROOT)
-find_program_harder(CMAKEMBED_AVR_CXX_COMPILER "avr-g++" CMAKEMBED_AVR_SYSROOT)
-
-set(CMAKE_C_COMPILER "${CMAKEMBED_AVR_C_COMPILER}" CACHE FILEPATH "C compiler")
-set(CMAKE_CXX_COMPILER "${CMAKEMBED_AVR_CXX_COMPILER}" CACHE FILEPATH "C++ compiler")
-
-# Enable the AVR utility functions
-include(AVRCompilerOptions)
+cmakembed_find_program(CMAKE_C_COMPILER
+    "avr-gcc"
+    CMAKEMBED_AVR_SYSROOT
+    REQUIRED
+)
+cmakembed_find_program(CMAKE_CXX_COMPILER
+    "avr-g++"
+    CMAKEMBED_AVR_SYSROOT
+    REQUIRED
+)
 
 # Find the AVR system include path
 find_path(AVR_SYSTEM_INCLUDE_DIR
