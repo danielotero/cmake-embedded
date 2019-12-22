@@ -1,7 +1,7 @@
 # This toolchain file is included multiple times by CMake and I don't like
 # repeated flags. Let's use an include blocker.
 if(__CMAKEMBED_AVR_TOOLCHAIN)
-  return()
+    return()
 endif()
 set(__CMAKEMBED_AVR_TOOLCHAIN 1)
 
@@ -32,7 +32,7 @@ cmakembed_find_program(CMAKE_CXX_COMPILER
 )
 
 # Find the AVR system include path
-find_path(AVR_SYSTEM_INCLUDE_DIR
+find_path(CMAKEMBED_AVR_INCLUDE_DIR
     NAMES
         "avr/builtins.h"           # Random file to locate
     PATHS
@@ -43,8 +43,8 @@ find_path(AVR_SYSTEM_INCLUDE_DIR
         "include"                  # Sane suffix inside the sysroot
         "avr/include"              # Arduino structure
 )
-if (AVR_SYSTEM_INCLUDE_DIR)
-    include_directories(SYSTEM "${AVR_SYSTEM_INCLUDE_DIR}")
+if (CMAKEMBED_AVR_INCLUDE_DIR)
+    include_directories(SYSTEM "${CMAKEMBED_AVR_INCLUDE_DIR}")
 endif()
 
 # Enable the AVR utility functions
