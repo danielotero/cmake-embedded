@@ -47,6 +47,11 @@ if (AVR_SYSTEM_INCLUDE_DIR)
     include_directories(SYSTEM "${AVR_SYSTEM_INCLUDE_DIR}")
 endif()
 
+# Enable the AVR utility functions
+include(AVRCompilerOptions)
+# Enable the AVR firmware utils
+include(AVRFirmware)
+
 # Search for programs in the build host directories
 set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 # Search for libraries and headers in the target directories
