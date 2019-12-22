@@ -517,6 +517,7 @@ function(avr_set_target_compile_options target mcu_name)
 
     string(TOLOWER "${mcu_name}" mcu_name)
     target_compile_options(${target} PRIVATE "-mmcu=${mcu_name}")
+    set_property(TARGET ${target} PROPERTY "CMAKEMBED_AVR_MCU" "${mcu_name}")
 endfunction()
 
 # Configure CMake to globally compile for the given AVR MCU
@@ -528,6 +529,7 @@ function(avr_set_compile_options mcu_name)
 
     string(TOLOWER "${mcu_name}" mcu_name)
     add_compile_options("-mmcu=${mcu_name}")
+    set_property(GLOBAL PROPERTY "CMAKEMBED_AVR_MCU" "${mcu_name}")
 endfunction()
 
 # Add the default "avr-gcc" compile definitions of a given MCU to the desired
