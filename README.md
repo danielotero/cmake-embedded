@@ -9,6 +9,8 @@ Usually, you must set the [`CMAKE_TOOLCHAIN_FILE`](https://cmake.org/cmake/help/
 
 Check out the [CMake documentation on Toolchain](https://cmake.org/cmake/help/v3.12/manual/cmake-toolchains.7.html) for more information.
 
+The [cmake-embedded-examples repo](https://github.com/danielotero/cmake-embedded-examples) contains some examples.
+
 ### AVR GNU Toolchain (avr-gcc)
 
 The toolchain file is at path: [`Toolchains/avr-gcc.cmake`](Toolchains/avr-gcc.cmake)
