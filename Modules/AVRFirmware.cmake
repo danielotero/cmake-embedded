@@ -1,17 +1,16 @@
+# Find the utils we need system-wise
 cmakembed_find_program(CMAKEMBED_AVR_OBJCOPY
     "avr-objcopy"
-    CMAKEMBED_AVR_SYS
+    CMAKEMBED_AVR_SYSROOT
     REQUIRED
 )
-
 cmakembed_find_program(CMAKEMBED_AVR_SIZE
     "avr-size"
-    CMAKEMBED_AVR_SYS
+    CMAKEMBED_AVR_SYSROOT
 )
-
 cmakembed_find_program(CMAKEMBED_AVR_AVRDUDE
     "avrdude"
-    CMAKEMBED_AVR_SYS
+    CMAKEMBED_AVRDUDE_PATH
 )
 
 ###############################################################################
