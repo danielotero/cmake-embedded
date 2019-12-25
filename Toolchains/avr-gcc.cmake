@@ -17,9 +17,9 @@ set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_PROCESSOR avr)
 set(CMAKE_SYSTEM_VERSION 1)
 
-# Try to find the compilers. We will need their path later.
 include(Utils)
 
+# Try to find the binaries needed
 cmakembed_find_program(CMAKE_C_COMPILER
     "avr-gcc"
     CMAKEMBED_AVR_SYSROOT
@@ -29,6 +29,19 @@ cmakembed_find_program(CMAKE_CXX_COMPILER
     "avr-g++"
     CMAKEMBED_AVR_SYSROOT
     REQUIRED
+)
+cmakembed_find_program(CMAKE_OBJCOPY
+    "avr-objcopy"
+    CMAKEMBED_AVR_SYSROOT
+    REQUIRED
+)
+cmakembed_find_program(CMAKEMBED_AVR_SIZE
+    "avr-size"
+    CMAKEMBED_AVR_SYSROOT
+)
+cmakembed_find_program(CMAKEMBED_AVR_AVRDUDE
+    "avrdude"
+    CMAKEMBED_AVRDUDE_PATH
 )
 
 # Find the AVR system include path
@@ -47,14 +60,12 @@ if (NOT CMAKEMBED_AVR_INCLUDE_DIR)
     message(WARNING "Can not find AVR system include directory.")
 endif()
 
-# Enable the AVR utility functions
-include(AVRCompilerOptions)
-# Enable the AVR firmware utils
-include(AVRFirmware)
-
 # Search for programs in the build host directories
 set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 # Search for libraries and headers in the target directories
 set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
+
+# Include the AVR functions
+include(AVR)
