@@ -43,8 +43,8 @@ find_path(CMAKEMBED_AVR_INCLUDE_DIR
         "include"                  # Sane suffix inside the sysroot
         "avr/include"              # Arduino structure
 )
-if (CMAKEMBED_AVR_INCLUDE_DIR)
-    include_directories(SYSTEM "${CMAKEMBED_AVR_INCLUDE_DIR}")
+if (NOT CMAKEMBED_AVR_INCLUDE_DIR)
+    message(WARNING "Can not find AVR system include directory.")
 endif()
 
 # Enable the AVR utility functions

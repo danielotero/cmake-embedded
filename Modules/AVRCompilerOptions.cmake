@@ -517,6 +517,7 @@ function(avr_set_target_compile_options target mcu_name)
 
     string(TOLOWER "${mcu_name}" mcu_name)
     target_compile_options(${target} PRIVATE "-mmcu=${mcu_name}")
+    target_include_directories(${CMAKEMBED_AVR_INCLUDE_DIR})
     set_property(TARGET ${target} PROPERTY "CMAKEMBED_AVR_MCU" "${mcu_name}")
 endfunction()
 
@@ -529,6 +530,7 @@ function(avr_set_compile_options mcu_name)
 
     string(TOLOWER "${mcu_name}" mcu_name)
     add_compile_options("-mmcu=${mcu_name}")
+    include_directories(${CMAKEMBED_AVR_INCLUDE_DIR})
     set_property(GLOBAL PROPERTY "CMAKEMBED_AVR_MCU" "${mcu_name}")
 endfunction()
 
